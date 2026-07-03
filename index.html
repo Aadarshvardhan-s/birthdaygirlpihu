@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Priyanshi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#FF4F81;
+  --pink-light:#FF7EB3;
+  --blush:#FFE4EC;
+  --cream:#FFF8FB;
+  --purple:#7C3AED;
+  --gold:#FBBF24;
+  --ink:#2B1730;
+  --ink-soft:#6B5A70;
+  --card:#FFFFFF;
+  --border:rgba(124,58,237,0.10);
+  --shadow:0 10px 30px rgba(255,79,129,0.14);
+  --radius:22px;
+  --font-display:'Poppins',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --bg:var(--cream);
+}
+[data-theme="dark"]{
+  --cream:#180E20;
+  --blush:#241533;
+  --ink:#F4E9F7;
+  --ink-soft:#C6B4CC;
+  --card:#221430;
+  --border:rgba(255,126,179,0.15);
+  --shadow:0 10px 30px rgba(0,0,0,0.45);
+  --bg:#150C1C;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--ink);
+  overflow-x:hidden;
+  transition:background .4s ease,color .4s ease;
+}
+img,svg{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;border:none;cursor:pointer;background:none;color:inherit;}
+h1,h2,h3,h4{font-family:var(--font-display);}
+::selection{background:var(--pink-light);color:#fff;}
+
+/* scrollbar */
+::-webkit-scrollbar{width:10px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--pink-light);border-radius:10px;}
+
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px;}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:15px 30px;border-radius:100px;font-weight:600;font-size:15px;
+  cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
+  white-space:nowrap;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--pink),var(--purple));
+  color:#fff;box-shadow:0 8px 24px rgba(255,79,129,0.4);
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(255,79,129,0.55);filter:brightness(1.05);}
+.btn-ghost{
+  background:rgba(255,255,255,0.6);
+  border:1.5px solid var(--pink);
+  color:var(--pink);
+  backdrop-filter:blur(6px);
+}
+[data-theme="dark"] .btn-ghost{background:rgba(255,255,255,0.05);}
+.btn-ghost:hover{background:var(--pink);color:#fff;transform:translateY(-3px);}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#f59e0b);color:#402c00;box-shadow:0 8px 20px rgba(251,191,36,.45);}
+.btn-gold:hover{transform:translateY(-3px);}
+.btn:active{transform:translateY(0) scale(.97);}
+
+/* ---------- Navbar ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  background:rgba(255,248,251,0.75);
+  backdrop-filter:blur(16px) saturate(160%);
+  border-bottom:1px solid var(--border);
+  transition:background .4s ease;
+}
+[data-theme="dark"] header{background:rgba(21,12,28,0.75);}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1320px;margin:0 auto;}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-size:22px;}
+.logo .balloon{font-size:26px;animation:bob 3.2s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg);}50%{transform:translateY(-6px) rotate(4deg);}}
+.logo span{background:linear-gradient(135deg,var(--pink),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.nav-links{display:flex;gap:30px;align-items:center;}
+.nav-links a{font-size:14.5px;font-weight:500;color:var(--ink-soft);position:relative;padding:6px 0;transition:color .25s;}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:linear-gradient(90deg,var(--pink),var(--purple));transition:width .3s ease;border-radius:2px;}
+.nav-links a:hover{color:var(--pink);}
+.nav-links a:hover::after{width:100%;}
+.nav-icons{display:flex;align-items:center;gap:6px;}
+.icon-btn{
+  position:relative;width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+  transition:background .25s,transform .25s;
+}
+.icon-btn:hover{background:var(--blush);transform:translateY(-2px);}
+.badge{
+  position:absolute;top:-2px;right:-2px;background:var(--pink);color:#fff;
+  font-size:10px;font-weight:700;width:17px;height:17px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 0 2px var(--bg);
+}
+.burger{display:none;font-size:22px;}
+
+@media(max-width:960px){
+  .nav-links{position:fixed;top:70px;left:0;right:0;background:var(--card);flex-direction:column;padding:20px;gap:18px;box-shadow:var(--shadow);transform:translateY(-130%);transition:transform .35s ease;border-bottom:1px solid var(--border);}
+  .nav-links.open{transform:translateY(0);}
+  .burger{display:block;}
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;padding:170px 24px 110px;overflow:hidden;
+  background:radial-gradient(circle at 15% 20%, rgba(255,126,179,0.22), transparent 45%),
+             radial-gradient(circle at 85% 15%, rgba(124,58,237,0.18), transparent 40%),
+             radial-gradient(circle at 50% 100%, rgba(251,191,36,0.16), transparent 45%);
+}
+.hero-inner{max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:3;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:100px;
+  background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);
+  font-size:13px;font-weight:600;color:var(--purple);margin-bottom:26px;
+  animation:floaty 4s ease-in-out infinite;
+}
+h1.hero-title{
+  font-size:clamp(38px,6vw,68px);font-weight:800;line-height:1.08;letter-spacing:-1.5px;
+  background:linear-gradient(135deg,var(--ink) 30%,var(--pink) 65%,var(--purple));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:22px;
+}
+.hero p.sub{font-size:18px;color:var(--ink-soft);max-width:640px;margin:0 auto 38px;line-height:1.7;}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:64px;}
+
+.hero-stats{display:flex;gap:60px;justify-content:center;flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat b{font-family:var(--font-display);font-size:34px;font-weight:800;color:var(--pink);display:block;}
+.stat span{font-size:13px;color:var(--ink-soft);}
+
+/* floating decor */
+.floaters{position:absolute;inset:0;pointer-events:none;z-index:1;}
+.floaters span{position:absolute;font-size:34px;opacity:.85;filter:drop-shadow(0 10px 14px rgba(0,0,0,.08));animation:floaty 6s ease-in-out infinite;}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-22px) rotate(6deg);}}
+.f1{top:12%;left:6%;animation-duration:5s;}
+.f2{top:22%;right:10%;animation-duration:7s;font-size:28px;}
+.f3{bottom:18%;left:12%;animation-duration:6.5s;font-size:24px;}
+.f4{bottom:10%;right:8%;animation-duration:5.5s;}
+.f5{top:55%;left:2%;animation-duration:8s;font-size:20px;}
+.f6{top:8%;left:45%;animation-duration:9s;font-size:22px;}
+
+.confetti-bg{position:absolute;inset:0;z-index:0;pointer-events:none;}
+.confetti-bg i{position:absolute;top:-5%;width:8px;height:14px;border-radius:2px;opacity:.7;animation:fall linear infinite;}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg);}}
+
+/* ---------- Section headers ---------- */
+.section{padding:90px 24px;}
+.section-head{text-align:center;max-width:640px;margin:0 auto 50px;}
+.section-head .tag{color:var(--pink);font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;}
+.section-head h2{font-size:clamp(28px,4vw,40px);font-weight:800;margin-top:10px;letter-spacing:-1px;}
+.section-head p{color:var(--ink-soft);margin-top:12px;font-size:16px;}
+
+/* ---------- Categories ---------- */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;max-width:1200px;margin:0 auto;}
+.cat-card{
+  background:var(--card);border:1px solid var(--border);border-radius:20px;
+  padding:26px 16px;text-align:center;cursor:pointer;
+  transition:transform .35s ease,box-shadow .35s ease,border-color .35s;
+}
+.cat-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:var(--shadow);border-color:var(--pink-light);}
+.cat-card .ci{font-size:34px;margin-bottom:10px;display:block;transition:transform .35s;}
+.cat-card:hover .ci{transform:scale(1.15) rotate(-6deg);}
+.cat-card h4{font-size:14px;font-weight:600;}
+
+/* ---------- Product grid ---------- */
+.tabs{display:flex;justify-content:center;gap:10px;margin-bottom:40px;flex-wrap:wrap;}
+.tab-btn{padding:10px 22px;border-radius:100px;font-weight:600;font-size:14px;border:1.5px solid var(--border);color:var(--ink-soft);transition:all .25s;}
+.tab-btn.active,.tab-btn:hover{background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;border-color:transparent;}
+
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:26px;max-width:1240px;margin:0 auto;}
+.pcard{
+  background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);
+  position:relative;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s;
+}
+.pcard:hover{transform:translateY(-10px);box-shadow:var(--shadow);}
+.pcard .pimg{
+  height:190px;display:flex;align-items:center;justify-content:center;font-size:70px;
+  position:relative;overflow:hidden;
+}
+.pcard .pimg::after{content:'';position:absolute;inset:0;opacity:.9;}
+.pcard:hover .pimg span{transform:scale(1.15) rotate(-4deg);}
+.pcard .pimg span{transition:transform .5s ease;z-index:2;}
+.badge-off{position:absolute;top:12px;left:12px;background:var(--pink);color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:100px;z-index:3;}
+.wish{position:absolute;top:10px;right:10px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.85);display:flex;align-items:center;justify-content:center;font-size:16px;z-index:3;transition:transform .25s,background .25s;}
+.wish:hover{transform:scale(1.15);}
+.wish.active{background:var(--pink);color:#fff;}
+.quickview{
+  position:absolute;bottom:-50px;left:0;right:0;text-align:center;padding:10px;
+  background:rgba(255,255,255,0.92);font-size:12.5px;font-weight:700;letter-spacing:.5px;
+  transition:bottom .35s ease;color:var(--purple);
+}
+[data-theme="dark"] .quickview{background:rgba(34,20,48,0.92);}
+.pcard:hover .quickview{bottom:0;}
+.pbody{padding:18px;}
+.pbody h4{font-size:15.5px;font-weight:600;margin-bottom:6px;}
+.stars{color:var(--gold);font-size:13px;margin-bottom:8px;}
+.stars span{color:var(--ink-soft);margin-left:4px;}
+.price-row{display:flex;align-items:center;justify-content:space-between;}
+.price{font-family:var(--font-display);font-weight:700;font-size:18px;}
+.old-price{text-decoration:line-through;color:var(--ink-soft);font-size:13px;font-weight:400;margin-left:6px;}
+.add-btn{
+  width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--purple));
+  color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 16px rgba(255,79,129,.4);transition:transform .25s;
+}
+.add-btn:hover{transform:scale(1.15) rotate(90deg);}
+.pgrad1{background:linear-gradient(135deg,#FFE4EC,#FFD3E4);}
+.pgrad2{background:linear-gradient(135deg,#EDE1FF,#DDCCFF);}
+.pgrad3{background:linear-gradient(135deg,#FFF3D6,#FFE7A8);}
+.pgrad4{background:linear-gradient(135deg,#FFE1EC,#FBC7DD);}
+
+/* ---------- Offers / countdown ---------- */
+.offer-banner{
+  max-width:1240px;margin:0 auto;border-radius:28px;padding:60px 40px;position:relative;overflow:hidden;
+  background:linear-gradient(120deg,var(--purple),var(--pink));color:#fff;text-align:center;
+}
+.offer-banner h2{font-size:clamp(26px,4vw,38px);margin-bottom:14px;}
+.offer-banner p{opacity:.9;margin-bottom:30px;}
+.countdown{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.countdown .c{background:rgba(255,255,255,0.16);backdrop-filter:blur(6px);border-radius:16px;padding:16px 22px;min-width:80px;}
+.countdown .c b{display:block;font-size:30px;font-family:var(--font-display);}
+.countdown .c span{font-size:11px;letter-spacing:1px;text-transform:uppercase;opacity:.85;}
+
+/* ---------- Testimonials ---------- */
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;max-width:1100px;margin:0 auto;}
+.rev-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:26px;transition:transform .3s;}
+.rev-card:hover{transform:translateY(-6px);}
+.rev-top{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--purple));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;}
+.rev-card p{color:var(--ink-soft);font-size:14.5px;line-height:1.6;}
+
+/* ---------- Newsletter ---------- */
+.newsletter{max-width:720px;margin:0 auto;text-align:center;background:var(--card);border:1px solid var(--border);border-radius:28px;padding:50px 34px;box-shadow:var(--shadow);}
+.nl-form{display:flex;gap:10px;max-width:420px;margin:26px auto 0;flex-wrap:wrap;justify-content:center;}
+.nl-form input{flex:1;min-width:200px;padding:14px 18px;border-radius:100px;border:1.5px solid var(--border);background:var(--bg);color:var(--ink);font-size:14px;}
+.nl-form input:focus{outline:2px solid var(--pink-light);}
+
+/* ---------- Footer ---------- */
+footer{background:var(--blush);padding:70px 24px 24px;margin-top:40px;}
+[data-theme="dark"] footer{background:#1b1024;}
+.foot-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--border);}
+.foot-grid h4{font-size:15px;margin-bottom:16px;}
+.foot-grid ul{list-style:none;}
+.foot-grid li{margin-bottom:10px;}
+.foot-grid a{color:var(--ink-soft);font-size:14px;transition:color .2s;}
+.foot-grid a:hover{color:var(--pink);}
+.social-row{display:flex;gap:10px;margin-top:16px;}
+.social-row a{width:36px;height:36px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;transition:transform .25s;}
+.social-row a:hover{transform:translateY(-4px);background:var(--pink);color:#fff;}
+.foot-bottom{max-width:1240px;margin:0 auto;padding-top:20px;text-align:center;font-size:13px;color:var(--ink-soft);}
+@media(max-width:800px){.foot-grid{grid-template-columns:1fr 1fr;}}
+
+/* ---------- Floating cart button & back to top ---------- */
+.fab{position:fixed;bottom:26px;z-index:400;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 10px 26px rgba(255,79,129,.45);transition:transform .3s;}
+.fab:hover{transform:scale(1.1) translateY(-3px);}
+#cartFab{right:26px;background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;}
+#topFab{right:26px;bottom:96px;background:var(--card);color:var(--pink);border:1px solid var(--border);opacity:0;pointer-events:none;}
+#topFab.show{opacity:1;pointer-events:auto;}
+#themeFab{left:26px;bottom:26px;background:var(--card);color:var(--purple);border:1px solid var(--border);position:fixed;z-index:400;}
+
+/* ---------- Cart Drawer ---------- */
+.overlay{position:fixed;inset:0;background:rgba(20,10,25,0.45);backdrop-filter:blur(2px);z-index:600;opacity:0;pointer-events:none;transition:opacity .35s ease;}
+.overlay.show{opacity:1;pointer-events:auto;}
+.drawer{
+  position:fixed;top:0;right:0;height:100%;width:400px;max-width:92vw;background:var(--card);z-index:700;
+  transform:translateX(100%);transition:transform .4s cubic-bezier(.2,.9,.25,1);display:flex;flex-direction:column;
+}
+.drawer.show{transform:translateX(0);}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid var(--border);}
+.drawer-head h3{font-size:19px;}
+.drawer-body{flex:1;overflow-y:auto;padding:18px 24px;}
+.cart-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);align-items:center;}
+.cart-item .ci-img{width:56px;height:56px;border-radius:14px;background:var(--blush);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+.cart-item .ci-info{flex:1;}
+.cart-item h5{font-size:14px;margin-bottom:4px;}
+.cart-item .ci-price{font-size:13px;color:var(--pink);font-weight:700;}
+.qty-ctrl{display:flex;align-items:center;gap:8px;margin-top:6px;}
+.qty-ctrl button{width:22px;height:22px;border-radius:50%;border:1px solid var(--border);font-size:13px;display:flex;align-items:center;justify-content:center;}
+.remove-x{color:var(--ink-soft);font-size:16px;cursor:pointer;padding:4px;}
+.empty-cart{text-align:center;padding:60px 10px;color:var(--ink-soft);}
+.empty-cart .ec-icon{font-size:50px;margin-bottom:14px;}
+.drawer-foot{padding:20px 24px;border-top:1px solid var(--border);}
+.sum-row{display:flex;justify-content:space-between;font-size:14px;color:var(--ink-soft);margin-bottom:8px;}
+.sum-row.total{font-size:17px;font-weight:700;color:var(--ink);margin-top:10px;}
+.drawer-foot .btn{width:100%;justify-content:center;margin-top:14px;}
+
+/* ---------- Checkout Modal ---------- */
+.modal-overlay{position:fixed;inset:0;background:rgba(20,10,25,0.55);backdrop-filter:blur(3px);z-index:800;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s;padding:20px;}
+.modal-overlay.show{opacity:1;pointer-events:auto;}
+.modal{
+  background:var(--card);border-radius:26px;max-width:560px;width:100%;max-height:88vh;overflow-y:auto;
+  padding:34px;transform:translateY(30px) scale(.96);transition:transform .4s cubic-bezier(.2,.9,.25,1);
+  box-shadow:0 30px 70px rgba(0,0,0,.3);
+}
+.modal-overlay.show .modal{transform:translateY(0) scale(1);}
+.modal h3{font-size:24px;margin-bottom:6px;}
+.modal .sub-note{color:var(--ink-soft);font-size:14px;margin-bottom:24px;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-grid .full{grid-column:1/-1;}
+.field label{font-size:12.5px;font-weight:600;color:var(--ink-soft);display:block;margin-bottom:6px;}
+.field input,.field textarea,.field select{
+  width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid var(--border);
+  background:var(--bg);color:var(--ink);font-size:14px;font-family:inherit;transition:border-color .2s,box-shadow .2s;
+}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--pink);box-shadow:0 0 0 4px rgba(255,79,129,.12);}
+.field.error input,.field.error textarea{border-color:#ef4444;}
+.err-msg{color:#ef4444;font-size:11.5px;margin-top:4px;display:none;}
+.field.error .err-msg{display:block;}
+.field textarea{resize:vertical;min-height:70px;}
+.check-row{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-soft);margin-top:4px;}
+.pay-options{display:flex;gap:10px;flex-wrap:wrap;}
+.pay-opt{flex:1;min-width:110px;padding:12px;border:1.5px solid var(--border);border-radius:12px;text-align:center;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;}
+.pay-opt.active{border-color:var(--pink);background:var(--blush);color:var(--pink);}
+.modal-total{display:flex;justify-content:space-between;align-items:center;margin:22px 0 6px;padding-top:16px;border-top:1px dashed var(--border);font-size:17px;font-weight:700;}
+.close-modal{position:absolute;top:20px;right:24px;font-size:20px;color:var(--ink-soft);cursor:pointer;}
+.modal{position:relative;}
+
+/* success */
+.success-box{text-align:center;padding:20px 0;}
+.success-box .tick{
+  width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--purple));
+  display:flex;align-items:center;justify-content:center;font-size:44px;color:#fff;margin:0 auto 22px;
+  animation:pop .5s cubic-bezier(.2,1.5,.4,1);
+}
+@keyframes pop{0%{transform:scale(0);}70%{transform:scale(1.15);}100%{transform:scale(1);}}
+.success-box h3{font-size:22px;margin-bottom:10px;}
+.success-box p{color:var(--ink-soft);font-size:14.5px;margin-bottom:6px;}
+.order-id{font-family:var(--font-display);font-weight:700;color:var(--pink);}
+
+/* toast */
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(140%);background:var(--ink);color:#fff;padding:14px 26px;border-radius:100px;font-size:14px;font-weight:600;z-index:900;transition:transform .4s cubic-bezier(.2,.9,.25,1);box-shadow:0 12px 30px rgba(0,0,0,.3);}
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+/* confetti canvas */
+#confettiCanvas{position:fixed;inset:0;z-index:1000;pointer-events:none;}
+
+@media(max-width:600px){
+  .form-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:30px;}
+}
+</style>
+</head>
+<body>
+
+<canvas id="confettiCanvas"></canvas>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="nav">
+    <div class="logo"><span class="balloon">🎈</span><span>Birthday Bliss</span></div>
+    <div class="nav-icons">
+      <button class="burger" id="burgerBtn">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="confetti-bg" id="confettiBg"></div>
+  <div class="floaters">
+    <span class="f1">🎈</span>
+    <span class="f2">🎁</span>
+    <span class="f3">🎂</span>
+    <span class="f4">🎀</span>
+    <span class="f5">⭐</span>
+    <span class="f6">✨</span>
+  </div>
+  <div class="hero-inner">
+    <div class="eyebrow">🎉 A very special day</div>
+    <h1 class="hero-title">Happy Birthday<br>Priyanshi</h1>
+    <p class="sub">Wishing you a day full of laughter, love, sweet surprises, and beautiful memories. May this year bring you endless joy and happiness.</p>
+    <div class="hero-btns">
+      <a href="third.html" class="btn btn-primary">yoooo</a>
+      <a href="second.html" class="btn btn-ghost">Celebrate</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FLOATING BUTTONS ================= -->
+<button class="fab" id="themeFab" title="Toggle theme">🌙</button>
+<button class="fab" id="topFab" title="Back to top">↑</button>
+<button class="fab" id="cartFab" title="Cart">🛍️<span class="badge" id="cartBadge2" style="display:none">0</span></button>
+
+<!-- ================= CART DRAWER ================= -->
+<div class="overlay" id="drawerOverlay"></div>
+<div class="drawer" id="cartDrawer">
+  <div class="drawer-head">
+    <h3>Your Cart 🛍️</h3>
+    <span style="cursor:pointer;font-size:20px;" id="closeDrawer">✕</span>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-foot" id="drawerFoot" style="display:none;">
+    <div class="sum-row"><span>Subtotal</span><span id="sumSub">₹0</span></div>
+    <div class="sum-row"><span>Delivery</span><span id="sumDel">₹49</span></div>
+    <div class="sum-row total"><span>Total</span><span id="sumTotal">₹0</span></div>
+    <button class="btn btn-primary" id="checkoutBtn">Proceed to Checkout →</button>
+  </div>
+</div>
+
+<!-- ================= CHECKOUT MODAL ================= -->
+<div class="modal-overlay" id="checkoutOverlay">
+  <div class="modal" id="checkoutModalBox">
+    <span class="close-modal" id="closeModal">✕</span>
+
+    <div id="formStage">
+      <h3>Complete Your Order 🎉</h3>
+      <p class="sub-note">Just a few details so we can deliver your gift perfectly.</p>
+      <form id="orderForm" novalidate>
+        <div class="form-grid">
+          <div class="field full">
+            <label>Full Name *</label>
+            <input type="text" id="fName" placeholder="e.g. Priya Verma" required>
+            <div class="err-msg">Please enter your full name</div>
+          </div>
+          <div class="field">
+            <label>Phone Number *</label>
+            <input type="tel" id="fPhone" placeholder="10-digit mobile number" required>
+            <div class="err-msg">Enter a valid 10-digit phone number</div>
+          </div>
+          <div class="field">
+            <label>Email *</label>
+            <input type="email" id="fEmail" placeholder="you@example.com" required>
+            <div class="err-msg">Enter a valid email address</div>
+          </div>
+          <div class="field full">
+            <label>Delivery Address *</label>
+            <input type="text" id="fAddress" placeholder="House no, street, area" required>
+            <div class="err-msg">Please enter your delivery address</div>
+          </div>
+          <div class="field">
+            <label>City *</label>
+            <input type="text" id="fCity" placeholder="City" required>
+            <div class="err-msg">Please enter your city</div>
+          </div>
+          <div class="field">
+            <label>Pincode *</label>
+            <input type="text" id="fPin" placeholder="6-digit pincode" required>
+            <div class="err-msg">Enter a valid 6-digit pincode</div>
+          </div>
+          <div class="field">
+            <label>Delivery Date *</label>
+            <input type="date" id="fDate" required>
+            <div class="err-msg">Please choose a delivery date</div>
+          </div>
+          <div class="field">
+            <label>Recipient Name (optional)</label>
+            <input type="text" id="fRecipient" placeholder="Who is this gift for?">
+          </div>
+          <div class="field full">
+            <label>Personalized Message (optional)</label>
+            <textarea id="fMsg" placeholder="Write a heartfelt birthday message..."></textarea>
+          </div>
+          <div class="field full">
+            <label class="check-row"><input type="checkbox" id="fGiftwrap"> Add gift wrap (+₹49) 🎀</label>
+          </div>
+          <div class="field full">
+            <label style="margin-bottom:10px;">Payment Method *</label>
+            <div class="pay-options" id="payOptions">
+              <div class="pay-opt active" data-pay="UPI">📱 UPI</div>
+              <div class="pay-opt" data-pay="Card">💳 Card</div>
+              <div class="pay-opt" data-pay="NetBanking">🏦 Net Banking</div>
+              <div class="pay-opt" data-pay="COD">💵 COD</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-total">
+          <span>Total Payable</span>
+          <span id="modalTotal">₹0</span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px;">Place Order 🎁</button>
+      </form>
+    </div>
+
+    <div id="successStage" style="display:none;">
+      <div class="success-box">
+        <div class="tick">✓</div>
+        <h3>Order Placed Successfully!</h3>
+        <p>Thank you, <b id="successName"></b>! Your gift is on its way.</p>
+        <p>Order ID: <span class="order-id" id="successOrderId"></span></p>
+        <p>Expected Delivery: <b id="successDate"></b></p>
+        <button class="btn btn-primary" id="doneBtn" style="margin-top:22px;">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   DATA
+============================================================ */
+const products = [
+  {n:'Choco Truffle Birthday Cake',cat:'cake',price:799,old:999,rating:4.8,rev:210,emoji:'🎂',grad:'pgrad1'},
+  {n:'Personalized Photo Mug',cat:'personal',price:449,old:599,rating:4.6,rev:145,emoji:'☕',grad:'pgrad2'},
+  {n:'Red Rose Bouquet (20 Stems)',cat:'flower',price:699,old:899,rating:4.7,rev:302,emoji:'💐',grad:'pgrad1'},
+  {n:'Birthday Surprise Combo Box',cat:'combo',price:1299,old:1699,rating:4.9,rev:410,emoji:'🎁',grad:'pgrad3'},
+  {n:'Custom Name Cushion',cat:'personal',price:549,old:699,rating:4.5,rev:98,emoji:'🛋️',grad:'pgrad4'},
+  {n:'Chocolate Hamper Deluxe',cat:'combo',price:999,old:1199,rating:4.8,rev:267,emoji:'🍫',grad:'pgrad2'},
+  {n:'Vanilla Photo Cake',cat:'cake',price:849,old:1049,rating:4.7,rev:189,emoji:'🎂',grad:'pgrad3'},
+  {n:'Cute Teddy Bear (2ft)',cat:'personal',price:649,old:799,rating:4.6,rev:156,emoji:'🧸',grad:'pgrad4'},
+];
+
+/* ============================================================
+   STATE
+============================================================ */
+let cart = [];
+let wishlist = new Set();
+let selectedPayment = 'UPI';
+
+/* ============================================================
+   RENDER PRODUCTS
+============================================================ */
+const prodGrid = document.getElementById('prodGrid');
+function renderProducts(filter='all'){
+  prodGrid.innerHTML = '';
+  products.filter(p=>filter==='all'||p.cat===filter).forEach((p,idx)=>{
+    const discount = Math.round((1-p.price/p.old)*100);
+    const card = document.createElement('div');
+    card.className = 'pcard';
+    card.style.animationDelay = (idx*0.05)+'s';
+    card.innerHTML = `
+      <div class="pimg ${p.grad}">
+        <span class="badge-off">-${discount}%</span>
+        <span class="wish" data-name="${p.n}">🤍</span>
+        <span>${p.emoji}</span>
+        <div class="quickview">QUICK VIEW</div>
+      </div>
+      <div class="pbody">
+        <h4>${p.n}</h4>
+        <div class="stars">★★★★★ <span>(${p.rev})</span></div>
+        <div class="price-row">
+          <div><span class="price">₹${p.price}</span><span class="old-price">₹${p.old}</span></div>
+          <button class="add-btn" data-name="${p.n}" data-price="${p.price}" data-emoji="${p.emoji}">+</button>
+        </div>
+      </div>`;
+    prodGrid.appendChild(card);
+  });
+  attachProductEvents();
+}
+renderProducts();
+
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.onclick = ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    renderProducts(btn.dataset.filter);
+  };
+});
+
+function attachProductEvents(){
+  document.querySelectorAll('.wish').forEach(w=>{
+    w.onclick = (e)=>{
+      e.stopPropagation();
+      const name = w.dataset.name;
+      if(wishlist.has(name)){wishlist.delete(name);w.classList.remove('active');w.textContent='🤍';}
+      else{wishlist.add(name);w.classList.add('active');w.textContent='❤️';showToast('Added to wishlist 💗');}
+      updateBadges();
+    };
+  });
+  document.querySelectorAll('.add-btn').forEach(b=>{
+    b.onclick = ()=>{
+      addToCart(b.dataset.name, parseInt(b.dataset.price), b.dataset.emoji);
+      burstConfettiAt(b);
+    };
+  });
+}
+
+/* ============================================================
+   CART LOGIC
+============================================================ */
+function addToCart(name, price, emoji){
+  const existing = cart.find(i=>i.name===name);
+  if(existing){existing.qty++;}
+  else{cart.push({name,price,emoji,qty:1});}
+  updateBadges();
+  renderCart();
+  showToast(name + ' added to cart 🛍️');
+}
+function changeQty(name, delta){
+  const item = cart.find(i=>i.name===name);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty<=0) cart = cart.filter(i=>i.name!==name);
+  updateBadges();
+  renderCart();
+}
+function removeItem(name){
+  cart = cart.filter(i=>i.name!==name);
+  updateBadges();
+  renderCart();
+}
+function cartSubtotal(){ return cart.reduce((s,i)=>s+i.price*i.qty,0); }
+
+function updateBadges(){
+  const cartCount = cart.reduce((s,i)=>s+i.qty,0);
+  [document.getElementById('cartBadge'),document.getElementById('cartBadge2')].forEach(b=>{
+    b.textContent = cartCount;
+    b.style.display = cartCount>0 ? 'flex':'none';
+  });
+  const wb = document.getElementById('wishBadge');
+  wb.textContent = wishlist.size;
+  wb.style.display = wishlist.size>0 ? 'flex':'none';
+}
+
+const drawerBody = document.getElementById('drawerBody');
+const drawerFoot = document.getElementById('drawerFoot');
+function renderCart(){
+  if(cart.length===0){
+    drawerBody.innerHTML = `<div class="empty-cart"><div class="ec-icon">🎈</div><p>Your cart feels a little empty...<br>Add a gift to make someone smile!</p></div>`;
+    drawerFoot.style.display = 'none';
+    return;
+  }
+  drawerFoot.style.display = 'block';
+  drawerBody.innerHTML = cart.map(i=>`
+    <div class="cart-item">
+      <div class="ci-img">${i.emoji}</div>
+      <div class="ci-info">
+        <h5>${i.name}</h5>
+        <div class="ci-price">₹${i.price*i.qty}</div>
+        <div class="qty-ctrl">
+          <button onclick="changeQty('${i.name.replace(/'/g,"\\'")}',-1)">−</button>
+          <span>${i.qty}</span>
+          <button onclick="changeQty('${i.name.replace(/'/g,"\\'")}',1)">+</button>
+        </div>
+      </div>
+      <div class="remove-x" onclick="removeItem('${i.name.replace(/'/g,"\\'")}')">✕</div>
+    </div>
+  `).join('');
+  const sub = cartSubtotal();
+  const del = cart.length? 49:0;
+  document.getElementById('sumSub').textContent = '₹'+sub;
+  document.getElementById('sumDel').textContent = '₹'+del;
+  document.getElementById('sumTotal').textContent = '₹'+(sub+del);
+}
+renderCart();
+
+/* ============================================================
+   DRAWER OPEN/CLOSE
+============================================================ */
+const drawerOverlay = document.getElementById('drawerOverlay');
+const cartDrawer = document.getElementById('cartDrawer');
+function openDrawer(){drawerOverlay.classList.add('show');cartDrawer.classList.add('show');}
+function closeDrawerFn(){drawerOverlay.classList.remove('show');cartDrawer.classList.remove('show');}
+document.getElementById('cartNavBtn').onclick = openDrawer;
+document.getElementById('cartFab').onclick = openDrawer;
+document.getElementById('closeDrawer').onclick = closeDrawerFn;
+drawerOverlay.onclick = ()=>{ closeDrawerFn(); closeCheckout(); };
+document.getElementById('wishNavBtn').onclick = ()=>{
+  showToast(wishlist.size ? `You have ${wishlist.size} item(s) in wishlist 💗` : 'Your wishlist is empty');
+};
+
+/* ============================================================
+   CHECKOUT MODAL
+============================================================ */
+const checkoutOverlay = document.getElementById('checkoutOverlay');
+document.getElementById('checkoutBtn').onclick = ()=>{
+  if(cart.length===0){ showToast('Your cart is empty!'); return; }
+  closeDrawerFn();
+  openCheckout();
+};
+function openCheckout(){
+  document.getElementById('formStage').style.display='block';
+  document.getElementById('successStage').style.display='none';
+  document.getElementById('modalTotal').textContent = '₹'+(cartSubtotal()+49);
+  checkoutOverlay.classList.add('show');
+}
+function closeCheckout(){ checkoutOverlay.classList.remove('show'); }
+document.getElementById('closeModal').onclick = closeCheckout;
+
+document.querySelectorAll('.pay-opt').forEach(p=>{
+  p.onclick = ()=>{
+    document.querySelectorAll('.pay-opt').forEach(x=>x.classList.remove('active'));
+    p.classList.add('active');
+    selectedPayment = p.dataset.pay;
+  };
+});
+document.getElementById('fGiftwrap').onchange = (e)=>{
+  const total = cartSubtotal()+49+(e.target.checked?49:0);
+  document.getElementById('modalTotal').textContent = '₹'+total;
+};
+
+/* ---- Form validation & submit ---- */
+const orderForm = document.getElementById('orderForm');
+const fields = [
+  {id:'fName', test:v=>v.trim().length>1},
+  {id:'fPhone', test:v=>/^[6-9]\d{9}$/.test(v.trim())},
+  {id:'fEmail', test:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())},
+  {id:'fAddress', test:v=>v.trim().length>4},
+  {id:'fCity', test:v=>v.trim().length>1},
+  {id:'fPin', test:v=>/^\d{6}$/.test(v.trim())},
+  {id:'fDate', test:v=>v.trim().length>0},
+];
+
+orderForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  let valid = true;
+  fields.forEach(f=>{
+    const input = document.getElementById(f.id);
+    const wrap = input.closest('.field');
+    if(!f.test(input.value)){
+      wrap.classList.add('error');
+      valid = false;
+    } else {
+      wrap.classList.remove('error');
+    }
+  });
+  if(!valid){ showToast('Please fill all required fields correctly'); return; }
+
+  // build order
+  const name = document.getElementById('fName').value.trim();
+  const date = document.getElementById('fDate').value;
+  const orderId = 'BB' + Math.floor(100000+Math.random()*900000);
+
+  document.getElementById('successName').textContent = name;
+  document.getElementById('successOrderId').textContent = '#'+orderId;
+  const d = new Date(date);
+  document.getElementById('successDate').textContent = isNaN(d) ? date : d.toDateString();
+
+  document.getElementById('formStage').style.display='none';
+  document.getElementById('successStage').style.display='block';
+
+  launchConfetti();
+  cart = [];
+  updateBadges();
+  renderCart();
+  orderForm.reset();
+  document.querySelectorAll('.field').forEach(f=>f.classList.remove('error'));
+});
+
+document.getElementById('doneBtn').onclick = ()=>{ closeCheckout(); };
+
+/* ============================================================
+   TOAST
+============================================================ */
+let toastTimer;
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove('show'), 2400);
+}
+
+/* ============================================================
+   THEME TOGGLE
+============================================================ */
+const themeFab = document.getElementById('themeFab');
+themeFab.onclick = ()=>{
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme')==='dark';
+  html.setAttribute('data-theme', isDark?'light':'dark');
+  themeFab.textContent = isDark ? '🌙' : '☀️';
+};
+
+/* ============================================================
+   BACK TO TOP + NAV SCROLL
+============================================================ */
+const topFab = document.getElementById('topFab');
+window.addEventListener('scroll', ()=>{
+  topFab.classList.toggle('show', window.scrollY>500);
+});
+topFab.onclick = ()=>window.scrollTo({top:0,behavior:'smooth'});
+
+/* burger menu */
+const burgerBtn = document.getElementById('burgerBtn');
+const navLinks = document.getElementById('navLinks');
+burgerBtn.onclick = ()=>navLinks.classList.toggle('open');
+navLinks.querySelectorAll('a').forEach(a=>a.onclick=()=>navLinks.classList.remove('open'));
+
+/* ============================================================
+   REVEAL ON SCROLL
+============================================================ */
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+},{threshold:0.15});
+revealEls.forEach(el=>io.observe(el));
+
+/* ============================================================
+   ANIMATED COUNTERS
+============================================================ */
+const counters = document.querySelectorAll('[data-count]');
+const counterIO = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const el = entry.target;
+      const target = parseInt(el.dataset.count);
+      let cur = 0;
+      const step = Math.max(1, Math.ceil(target/60));
+      const tick = ()=>{
+        cur += step;
+        if(cur>=target){ el.textContent = target.toLocaleString(); }
+        else { el.textContent = cur.toLocaleString(); requestAnimationFrame(tick); }
+      };
+      tick();
+      counterIO.unobserve(el);
+    }
+  });
+},{threshold:0.5});
+counters.forEach(c=>counterIO.observe(c));
+
+/* ============================================================
+   COUNTDOWN TIMER (24h flash sale, resets)
+============================================================ */
+function updateCountdown(){
+  const now = new Date();
+  const end = new Date();
+  end.setHours(23,59,59,999);
+  let diff = end - now;
+  if(diff<0) diff = 0;
+  const h = String(Math.floor(diff/3600000)).padStart(2,'0');
+  const m = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+  const s = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+  document.getElementById('cd-h').textContent = h;
+  document.getElementById('cd-m').textContent = m;
+  document.getElementById('cd-s').textContent = s;
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* ============================================================
+   HERO FLOATING CONFETTI BACKGROUND (ambient)
+============================================================ */
+const confettiBg = document.getElementById('confettiBg');
+const colors = ['#FF4F81','#FF7EB3','#7C3AED','#FBBF24'];
+for(let i=0;i<24;i++){
+  const c = document.createElement('i');
+  c.style.left = Math.random()*100+'%';
+  c.style.background = colors[i%colors.length];
+  c.style.animationDuration = (6+Math.random()*6)+'s';
+  c.style.animationDelay = (Math.random()*6)+'s';
+  c.style.opacity = 0.25 + Math.random()*0.35;
+  confettiBg.appendChild(c);
+}
+
+/* ============================================================
+   CONFETTI BURST (canvas) — used for add-to-cart & order success
+============================================================ */
+const canvas = document.getElementById('confettiCanvas');
+const ctx = canvas.getContext('2d');
+function resizeCanvas(){ canvas.width = innerWidth; canvas.height = innerHeight; }
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+let particles = [];
+function spawnParticles(x, y, count, spread){
+  for(let i=0;i<count;i++){
+    particles.push({
+      x, y,
+      vx:(Math.random()-0.5)*spread,
+      vy:(Math.random()*-spread)-2,
+      size:4+Math.random()*5,
+      color:colors[Math.floor(Math.random()*colors.length)],
+      rot:Math.random()*360,
+      vr:(Math.random()-0.5)*10,
+      life:0,
+      maxLife:60+Math.random()*40
+    });
+  }
+}
+function burstConfettiAt(el){
+  const r = el.getBoundingClientRect();
+  spawnParticles(r.left+r.width/2, r.top+r.height/2, 18, 6);
+}
+function launchConfetti(){
+  for(let i=0;i<6;i++){
+    setTimeout(()=>spawnParticles(Math.random()*canvas.width, -10, 30, 8), i*150);
+  }
+}
+function animateParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    p.x += p.vx; p.y += p.vy; p.vy += 0.18; p.rot += p.vr; p.life++;
+    ctx.save();
+    ctx.translate(p.x,p.y);
+    ctx.rotate(p.rot*Math.PI/180);
+    ctx.globalAlpha = Math.max(0, 1-p.life/p.maxLife);
+    ctx.fillStyle = p.color;
+    ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size*0.6);
+    ctx.restore();
+  });
+  particles = particles.filter(p=>p.life<p.maxLife && p.y<canvas.height+40);
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+/* ============================================================
+   NEWSLETTER SUBMIT
+============================================================ */
+document.getElementById('nlForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  showToast('🎉 Subscribed! Get ready for birthday magic in your inbox.');
+  this.reset();
+});
+
+/* set min date for delivery date = today */
+document.getElementById('fDate').min = new Date().toISOString().split('T')[0];
+</script>
+</body>
+</html>
