@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centered Video</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    overflow: hidden;
+    position: fixed;
+    inset: 0;
+  }
+
+  /* Hard-hide any native control UI across browser engines */
+  video::-webkit-media-controls,
+  video::-webkit-media-controls-enclosure,
+  video::-webkit-media-controls-panel,
+  video::-webkit-media-controls-play-button,
+  video::-webkit-media-controls-start-playback-button,
+  video::-webkit-media-controls-overlay-play-button,
+  video::-webkit-media-controls-timeline,
+  video::-webkit-media-controls-current-time-display,
+  video::-webkit-media-controls-time-remaining-display,
+  video::-webkit-media-controls-mute-button,
+  video::-webkit-media-controls-volume-slider,
+  video::-webkit-media-controls-fullscreen-button,
+  video::-webkit-media-controls-toggle-closed-captions-button {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  video {
+    width: 60%;
+    max-width: 900px;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 0 60px rgba(255, 255, 255, 0.08),
+                0 20px 60px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    animation: fadeIn 1.4s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+    video {
+      width: 75%;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    video {
+      width: 95%;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <video autoplay muted loop playsinline disablePictureInPicture disableRemotePlayback>
+    <source src="https://videotourl.com/videos/1783274737014-e8a4ba98-f61a-47ea-b3d1-edebfa6903e8.mp4" type="video/mp4">
+  </video>
+
+</body>
+</html>
