@@ -56,6 +56,10 @@
     animation: fadeIn 1.4s ease-out forwards;
   }
 
+  audio {
+    display: none;
+  }
+
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -84,9 +88,31 @@
 </head>
 <body>
 
+  <audio id="bg-audio" autoplay loop preload="auto">
+    <source src="https://www.image2url.com/r2/default/audio/1783276073975-ae4a7187-954c-41e4-9135-dec109369a53.mp3" type="audio/mpeg">
+  </audio>
+
   <video autoplay muted loop playsinline disablePictureInPicture disableRemotePlayback>
     <source src="https://videotourl.com/videos/1783274737014-e8a4ba98-f61a-47ea-b3d1-edebfa6903e8.mp4" type="video/mp4">
   </video>
+
+  <script>
+    const audio = document.getElementById('bg-audio');
+
+    const tryPlayAudio = () => {
+      if (!audio) return;
+      audio.volume = 1;
+      audio.muted = false;
+      audio.play().catch(() => {});
+    };
+
+    window.addEventListener('load', () => {
+      setTimeout(tryPlayAudio, 300);
+    });
+
+    document.addEventListener('pointerdown', tryPlayAudio, { once: true });
+    document.addEventListener('click', tryPlayAudio, { once: true });
+  </script>
 
 </body>
 </html>
